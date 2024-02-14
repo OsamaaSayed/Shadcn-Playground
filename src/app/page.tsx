@@ -21,6 +21,7 @@ interface Recipe {
 
 async function getRecipes(): Promise<Recipe[]> {
   const res = await fetch("http://localhost:4000/recipes");
+  await new Promise((resolve) => setTimeout(resolve, 3000));
 
   return res.json();
 }
@@ -56,7 +57,7 @@ export default async function Home() {
             </CardContent>
 
             <CardFooter className="flex justify-between">
-              <Button >View Recipe</Button>
+              <Button>View Recipe</Button>
               {recipe.vegan && <Badge variant="secondary">Vegan!</Badge>}
             </CardFooter>
           </Card>
